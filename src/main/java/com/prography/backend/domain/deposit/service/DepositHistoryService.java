@@ -45,4 +45,30 @@ public class DepositHistoryService {
 
         return depositHistoryRepository.save(history);
     }
+
+    public DepositHistoryEntity createPenalty(CohortMemberEntity cohortMember, Long penaltyAmount, Long attendanceId, String description) {
+        DepositHistoryEntity history = DepositHistoryEntity.builder()
+                .cohortMember(cohortMember)
+                .type(DepositType.PENALTY)
+                .amount(-penaltyAmount)
+                .balanceAfter(cohortMember.getDeposit())
+                .attendanceId(attendanceId)
+                .description(description)
+                .build();
+
+        return depositHistoryRepository.save(history);
+    }
+
+    public DepositHistoryEntity createRefund(CohortMemberEntity cohortMember, Long refundAmount, Long attendanceId, String description) {
+        DepositHistoryEntity history = DepositHistoryEntity.builder()
+                .cohortMember(cohortMember)
+                .type(DepositType.REFUND)
+                .amount(refundAmount)
+                .balanceAfter(cohortMember.getDeposit())
+                .attendanceId(attendanceId)
+                .description(description)
+                .build();
+
+        return depositHistoryRepository.save(history);
+    }
 }

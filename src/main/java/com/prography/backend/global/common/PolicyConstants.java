@@ -20,4 +20,8 @@ public final class PolicyConstants {
     public static final long INITIAL_DEPOSIT = 100_000L;
     public static final String INITIAL_DEPOSIT_DESCRIPTION = "초기 보증금";
     public static final int CURRENT_GENERATION = 11;
+    public static final int EXCUSE_LIMIT = 3;
+    public static final long PENALTY_ABSENT = 10_000L;
+    public static final long PENALTY_LATE_PER_MINUTE = 500L;
+    public static final long PENALTY_MAX = 10_000L;
 }

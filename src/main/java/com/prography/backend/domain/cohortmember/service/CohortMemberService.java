@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -53,6 +54,11 @@ public class CohortMemberService {
     @Transactional(readOnly = true)
     public Optional<CohortMemberEntity> findByMemberAndCohort(Long memberId, Long cohortId) {
         return cohortMemberRepository.findByMemberIdAndCohortId(memberId, cohortId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<CohortMemberEntity> getByGeneration(Integer generation) {
+        return cohortMemberRepository.findByCohortGenerationOrderByMemberIdAsc(generation);
     }
 
     @Transactional(readOnly = true)

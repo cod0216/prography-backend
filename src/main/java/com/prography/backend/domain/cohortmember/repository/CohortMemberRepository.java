@@ -3,6 +3,7 @@ package com.prography.backend.domain.cohortmember.repository;
 import com.prography.backend.domain.cohortmember.entity.CohortMemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -19,4 +20,5 @@ import java.util.Optional;
 public interface CohortMemberRepository extends JpaRepository<CohortMemberEntity, Long> {
     Optional<CohortMemberEntity> findFirstByMemberIdOrderByIdDesc(Long memberId);
     Optional<CohortMemberEntity> findByMemberIdAndCohortId(Long memberId, Long cohortId);
+    List<CohortMemberEntity> findByCohortGenerationOrderByMemberIdAsc(Integer generation);
 }

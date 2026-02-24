@@ -1,9 +1,7 @@
 package com.prography.backend.domain.member.controller;
 
 import com.prography.backend.domain.member.dto.response.MemberResponse;
-import com.prography.backend.domain.member.entity.MemberEntity;
-import com.prography.backend.domain.member.mapper.MemberMapper;
-import com.prography.backend.domain.member.service.MemberService;
+import com.prography.backend.domain.member.service.MemberFacadeService;
 import com.prography.backend.global.response.ApiResponse;
 import com.prography.backend.global.util.ResponseUtility;
 import lombok.RequiredArgsConstructor;
@@ -29,12 +27,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/members")
 public class MemberController {
 
-    private final MemberService memberService;
-    private final MemberMapper memberMapper;
+    private final MemberFacadeService memberFacadeService;
 
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<MemberResponse>> getMember(@PathVariable Long id) {
-        MemberEntity member = memberService.getById(id);
-        return ResponseUtility.success(memberMapper.toMemberResponse(member));
+        return ResponseUtility.success(memberFacadeService.getMember(id));
     }
 }

@@ -1,10 +1,8 @@
 package com.prography.backend.domain.auth.controller;
 
 import com.prography.backend.domain.auth.dto.request.LoginRequest;
-import com.prography.backend.domain.auth.service.AuthService;
+import com.prography.backend.domain.auth.service.AuthFacadeService;
 import com.prography.backend.domain.member.dto.response.MemberResponse;
-import com.prography.backend.domain.member.entity.MemberEntity;
-import com.prography.backend.domain.member.mapper.MemberMapper;
 import com.prography.backend.global.response.ApiResponse;
 import com.prography.backend.global.util.ResponseUtility;
 import jakarta.validation.Valid;
@@ -31,12 +29,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/auth")
 public class AuthController {
 
-    private final AuthService authService;
-    private final MemberMapper memberMapper;
+    private final AuthFacadeService authFacadeService;
 
     @PostMapping("/login")
     public ResponseEntity<ApiResponse<MemberResponse>> login(@RequestBody @Valid LoginRequest request) {
-        MemberEntity member = authService.login(request);
-        return ResponseUtility.success(memberMapper.toMemberResponse(member));
+        return ResponseUtility.success(authFacadeService.login(request));
     }
 }
