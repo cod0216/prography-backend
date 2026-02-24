@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * ===========================================================<br>
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
- * 2026-02-24         codex              최초생성<br>
+ * 2026-02-24         cod0216             최초생성<br>
  */
 class ApiResponseTest {
 

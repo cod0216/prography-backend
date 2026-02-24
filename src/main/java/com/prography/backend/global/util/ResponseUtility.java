@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
  * ===========================================================<br>
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
- * 2026-02-24         codex              최초생성<br>
+ * 2026-02-24         cod0216             최초생성<br>
  */
 public final class ResponseUtility {
     private ResponseUtility() {
