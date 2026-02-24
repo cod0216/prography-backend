@@ -1,6 +1,7 @@
 package com.prography.backend.domain.session.mapper;
 
 import com.prography.backend.domain.session.dto.response.AdminSessionResponse;
+import com.prography.backend.domain.session.dto.response.MemberSessionResponse;
 import com.prography.backend.domain.session.dto.response.SessionAttendanceSummaryResponse;
 import com.prography.backend.domain.session.entity.SessionEntity;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
  * 2026-02-24         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             회원 일정 응답 매핑 추가<br>
  */
 @Component
 public class SessionMapper {
@@ -34,6 +36,23 @@ public class SessionMapper {
                 .status(session.getStatus())
                 .attendanceSummary(summary)
                 .qrActive(qrActive)
+                .createdAt(session.getCreatedAt())
+                .updatedAt(session.getUpdatedAt())
+                .build();
+    }
+
+    public MemberSessionResponse toMemberResponse(SessionEntity session) {
+        if (session == null) {
+            return null;
+        }
+
+        return MemberSessionResponse.builder()
+                .id(session.getId())
+                .title(session.getTitle())
+                .date(session.getDate())
+                .time(session.getTime())
+                .location(session.getLocation())
+                .status(session.getStatus())
                 .createdAt(session.getCreatedAt())
                 .updatedAt(session.getUpdatedAt())
                 .build();
