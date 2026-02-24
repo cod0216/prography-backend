@@ -26,6 +26,7 @@ import java.util.List;
  * -----------------------------------------------------------<br>
  * 2026-02-24         cod0216             최초생성<br>
  * 2026-02-24         cod0216             QR 출석용 qrCodeId 저장 지원<br>
+ * 2026-02-24         cod0216             일정 다건 조회 기능 추가<br>
  */
 @Service
 @Transactional
@@ -65,6 +66,14 @@ public class AttendanceService {
     @Transactional(readOnly = true)
     public List<AttendanceEntity> getBySessionId(Long sessionId) {
         return attendanceRepository.findBySessionIdOrderByCreatedAtAsc(sessionId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<AttendanceEntity> getBySessionIds(Collection<Long> sessionIds) {
+        if (sessionIds == null || sessionIds.isEmpty()) {
+            return List.of();
+        }
+        return attendanceRepository.findBySessionIdIn(sessionIds);
     }
 
     @Transactional(readOnly = true)

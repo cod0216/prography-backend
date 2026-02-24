@@ -29,6 +29,7 @@ import java.time.LocalTime;
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
  * 2026-02-24         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             일정 수정 및 취소 처리 메서드 추가<br>
  */
 @Entity
 @Getter
@@ -57,4 +58,29 @@ public class SessionEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private SessionStatus status;
+
+    public void updateInfo(String title, LocalDate date, LocalTime time, String location) {
+        if (title != null) {
+            this.title = title;
+        }
+        if (date != null) {
+            this.date = date;
+        }
+        if (time != null) {
+            this.time = time;
+        }
+        if (location != null) {
+            this.location = location;
+        }
+    }
+
+    public void updateStatus(SessionStatus status) {
+        if (status != null) {
+            this.status = status;
+        }
+    }
+
+    public void cancel() {
+        this.status = SessionStatus.CANCELLED;
+    }
 }

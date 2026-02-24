@@ -11,6 +11,7 @@ package com.prography.backend.global.common;
  * -----------------------------------------------------------<br>
  * 2026-02-25         cod0216             최초생성<br>
  * 2026-02-24         cod0216             출결 정책 상수 추가<br>
+ * 2026-02-24         cod0216             QR 유효기간 상수 추가<br>
  */
 public final class PolicyConstants {
 
@@ -25,4 +26,5 @@ public final class PolicyConstants {
     public static final long PENALTY_ABSENT = 10_000L;
     public static final long PENALTY_LATE_PER_MINUTE = 500L;
     public static final long PENALTY_MAX = 10_000L;
+    public static final int QR_EXPIRE_HOURS = 24;
 }
