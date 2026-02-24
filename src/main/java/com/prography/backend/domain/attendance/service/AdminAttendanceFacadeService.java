@@ -43,6 +43,7 @@ import java.util.stream.Collectors;
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
  * 2026-02-24         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             QR 코드 없는 수동 출결 등록 처리<br>
  */
 @Service
 @Transactional
@@ -82,6 +83,7 @@ public class AdminAttendanceFacadeService {
                 lateMinutes,
                 penaltyAmount,
                 request.getReason(),
+                null,
                 null
         );
 

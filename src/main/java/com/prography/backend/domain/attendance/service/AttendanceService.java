@@ -25,6 +25,7 @@ import java.util.List;
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
  * 2026-02-24         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             QR 출석용 qrCodeId 저장 지원<br>
  */
 @Service
 @Transactional
@@ -34,11 +35,12 @@ public class AttendanceService {
     private final AttendanceRepository attendanceRepository;
 
     public AttendanceEntity create(SessionEntity session, MemberEntity member, AttendanceStatus status,
-                                   Integer lateMinutes, Long penaltyAmount, String reason, LocalDateTime checkedInAt) {
+                                   Integer lateMinutes, Long penaltyAmount, String reason, LocalDateTime checkedInAt,
+                                   Long qrCodeId) {
         AttendanceEntity attendance = AttendanceEntity.builder()
                 .session(session)
                 .member(member)
-                .qrCodeId(null)
+                .qrCodeId(qrCodeId)
                 .status(status)
                 .lateMinutes(lateMinutes)
                 .penaltyAmount(penaltyAmount)
