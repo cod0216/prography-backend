@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * packageName    : com.prography.backend.domain.deposit.service<br>
  * fileName       : DepositHistoryService.java<br>
@@ -25,6 +27,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class DepositHistoryService {
 
     private final DepositHistoryRepository depositHistoryRepository;
+
+    @Transactional(readOnly = true)
+    public List<DepositHistoryEntity> getByCohortMemberIdOrderByCreatedAtAsc(Long cohortMemberId) {
+        return depositHistoryRepository.findByCohortMemberIdOrderByCreatedAtAsc(cohortMemberId);
+    }
 
     public DepositHistoryEntity createInitial(CohortMemberEntity cohortMember, Long amount, String description) {
         DepositHistoryEntity history = DepositHistoryEntity.builder()
