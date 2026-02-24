@@ -16,6 +16,7 @@ import java.util.Optional;
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
  * 2026-02-24         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             기수별 조회 메서드 추가<br>
  */
 public interface CohortMemberRepository extends JpaRepository<CohortMemberEntity, Long> {
     Optional<CohortMemberEntity> findFirstByMemberIdOrderByIdDesc(Long memberId);

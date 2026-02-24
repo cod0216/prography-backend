@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
  * 2026-02-24         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             로그인 응답 매핑 파사드 위임<br>
  */
 @RestController
 @RequiredArgsConstructor

@@ -10,6 +10,7 @@ package com.prography.backend.global.common;
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
  * 2026-02-25         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             출결 정책 상수 추가<br>
  */
 public final class PolicyConstants {
 

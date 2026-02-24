@@ -25,6 +25,7 @@ import java.util.Optional;
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
  * 2026-02-24         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             기수별 조회 기능 추가<br>
  */
 @Service
 @Transactional

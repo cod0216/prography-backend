@@ -20,6 +20,7 @@ import java.util.List;
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
  * 2026-02-25         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             패널티/환급 이력 생성 추가<br>
  */
 @Service
 @Transactional
