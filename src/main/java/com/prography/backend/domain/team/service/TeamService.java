@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * packageName    : com.prography.backend.domain.team.service<br>
  * fileName       : TeamService.java<br>
@@ -29,5 +31,9 @@ public class TeamService {
     public TeamEntity getById(Long id) {
         return teamRepository.findById(id)
                 .orElseThrow(() -> new CustomException(StatusCode.TEAM_NOT_FOUND));
+    }
+
+    public List<TeamEntity> getByCohortId(Long cohortId) {
+        return teamRepository.findByCohortIdOrderByNameAsc(cohortId);
     }
 }

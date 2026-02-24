@@ -69,4 +69,29 @@ class TeamServiceTest {
                 .extracting("statusCode")
                 .isEqualTo(StatusCode.TEAM_NOT_FOUND);
     }
+
+    @Test
+    void getByCohortId_returnsTeams() {
+        // Given
+        CohortEntity cohort = cohortRepository.save(CohortEntity.builder()
+                .generation(11)
+                .name("11기")
+                .build());
+        TeamEntity team1 = teamRepository.save(TeamEntity.builder()
+                .name("Team A")
+                .cohort(cohort)
+                .build());
+        TeamEntity team2 = teamRepository.save(TeamEntity.builder()
+                .name("Team B")
+                .cohort(cohort)
+                .build());
+
+        // When
+        var teams = teamService.getByCohortId(cohort.getId());
+
+        // Then
+        assertThat(teams).hasSize(2);
+        assertThat(teams).extracting("id")
+                .containsExactly(team1.getId(), team2.getId());
+    }
 }

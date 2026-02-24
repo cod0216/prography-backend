@@ -5,6 +5,7 @@ import com.prography.backend.domain.cohort.repository.CohortRepository;
 import com.prography.backend.global.common.StatusCode;
 import com.prography.backend.global.error.CustomException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +30,7 @@ public class CohortService {
     private final CohortRepository cohortRepository;
 
     public List<CohortEntity> getCohorts() {
-        return cohortRepository.findAll();
+        return cohortRepository.findAll(Sort.by(Sort.Direction.ASC, "generation"));
     }
 
     public CohortEntity getById(Long id) {

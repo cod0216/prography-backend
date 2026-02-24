@@ -69,4 +69,29 @@ class PartServiceTest {
                 .extracting("statusCode")
                 .isEqualTo(StatusCode.PART_NOT_FOUND);
     }
+
+    @Test
+    void getByCohortId_returnsParts() {
+        // Given
+        CohortEntity cohort = cohortRepository.save(CohortEntity.builder()
+                .generation(11)
+                .name("11기")
+                .build());
+        PartEntity part1 = partRepository.save(PartEntity.builder()
+                .name("SERVER")
+                .cohort(cohort)
+                .build());
+        PartEntity part2 = partRepository.save(PartEntity.builder()
+                .name("WEB")
+                .cohort(cohort)
+                .build());
+
+        // When
+        var parts = partService.getByCohortId(cohort.getId());
+
+        // Then
+        assertThat(parts).hasSize(2);
+        assertThat(parts).extracting("id")
+                .containsExactly(part1.getId(), part2.getId());
+    }
 }
