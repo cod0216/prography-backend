@@ -2,6 +2,7 @@ package com.prography.backend.global.util;
 
 import com.prography.backend.global.common.StatusCode;
 import com.prography.backend.global.response.ApiResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -22,6 +23,10 @@ public final class ResponseUtility {
 
     public static <T> ResponseEntity<ApiResponse<T>> success(T data) {
         return ResponseEntity.ok(ApiResponse.success(data));
+    }
+
+    public static <T> ResponseEntity<ApiResponse<T>> created(T data) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.success(data));
     }
 
     public static ResponseEntity<ApiResponse<Void>> failure(StatusCode statusCode) {

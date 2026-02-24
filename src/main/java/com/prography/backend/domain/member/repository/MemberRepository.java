@@ -1,8 +1,10 @@
 package com.prography.backend.domain.member.repository;
 
 import com.prography.backend.domain.member.entity.MemberEntity;
+import com.prography.backend.domain.member.entity.MemberStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -19,4 +21,11 @@ import java.util.Optional;
 public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     Optional<MemberEntity> findByLoginId(String loginId);
     boolean existsByLoginId(String loginId);
+    List<MemberEntity> findByStatus(MemberStatus status);
+    List<MemberEntity> findByNameContaining(String name);
+    List<MemberEntity> findByLoginIdContaining(String loginId);
+    List<MemberEntity> findByPhoneContaining(String phone);
+    List<MemberEntity> findByStatusAndNameContaining(MemberStatus status, String name);
+    List<MemberEntity> findByStatusAndLoginIdContaining(MemberStatus status, String loginId);
+    List<MemberEntity> findByStatusAndPhoneContaining(MemberStatus status, String phone);
 }

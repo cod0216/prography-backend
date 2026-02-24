@@ -12,6 +12,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Optional;
+
 /**
  * packageName    : com.prography.backend.domain.cohortmember.service<br>
  * fileName       : CohortMemberService.java<br>
@@ -22,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
  * 2026-02-24         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             기수별 조회 기능 추가<br>
  */
 @Service
 @Transactional
@@ -41,6 +45,21 @@ public class CohortMemberService {
                 .build();
 
         return cohortMemberRepository.save(cohortMember);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<CohortMemberEntity> findLatestByMemberId(Long memberId) {
+        return cohortMemberRepository.findFirstByMemberIdOrderByIdDesc(memberId);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<CohortMemberEntity> findByMemberAndCohort(Long memberId, Long cohortId) {
+        return cohortMemberRepository.findByMemberIdAndCohortId(memberId, cohortId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<CohortMemberEntity> getByGeneration(Integer generation) {
+        return cohortMemberRepository.findByCohortGenerationOrderByMemberIdAsc(generation);
     }
 
     @Transactional(readOnly = true)

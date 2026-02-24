@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -53,16 +54,45 @@ public class MemberService {
                 .orElseThrow(() -> new CustomException(StatusCode.MEMBER_NOT_FOUND));
     }
 
+    public MemberEntity updateMember(Long id, String name, String phone) {
+        MemberEntity member = getById(id);
+        String newName = name != null ? name : member.getName();
+        String newPhone = phone != null ? phone : member.getPhone();
+        member.updateProfile(newName, newPhone);
+        return member;
+    }
+
     @Transactional(readOnly = true)
     public Optional<MemberEntity> findOptionalByLoginId(String loginId) {
         return memberRepository.findByLoginId(loginId);
     }
 
-    public void withdrawMember(Long id) {
+    @Transactional(readOnly = true)
+    public List<MemberEntity> searchMembers(MemberStatus status, String searchType, String searchValue) {
+        if (searchType == null || searchValue == null || searchValue.isBlank()) {
+            return status == null ? memberRepository.findAll() : memberRepository.findByStatus(status);
+        }
+
+        return switch (searchType) {
+            case "name" -> status == null
+                    ? memberRepository.findByNameContaining(searchValue)
+                    : memberRepository.findByStatusAndNameContaining(status, searchValue);
+            case "loginId" -> status == null
+                    ? memberRepository.findByLoginIdContaining(searchValue)
+                    : memberRepository.findByStatusAndLoginIdContaining(status, searchValue);
+            case "phone" -> status == null
+                    ? memberRepository.findByPhoneContaining(searchValue)
+                    : memberRepository.findByStatusAndPhoneContaining(status, searchValue);
+            default -> throw new CustomException(StatusCode.INVALID_INPUT);
+        };
+    }
+
+    public MemberEntity withdrawMember(Long id) {
         MemberEntity member = getById(id);
         if (member.getStatus() == MemberStatus.WITHDRAWN) {
             throw new CustomException(StatusCode.MEMBER_ALREADY_WITHDRAWN);
         }
         member.withdraw();
+        return member;
     }
 }
