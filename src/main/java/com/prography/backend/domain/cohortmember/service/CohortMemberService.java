@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 /**
  * packageName    : com.prography.backend.domain.cohortmember.service<br>
  * fileName       : CohortMemberService.java<br>
@@ -41,6 +43,16 @@ public class CohortMemberService {
                 .build();
 
         return cohortMemberRepository.save(cohortMember);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<CohortMemberEntity> findLatestByMemberId(Long memberId) {
+        return cohortMemberRepository.findFirstByMemberIdOrderByIdDesc(memberId);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<CohortMemberEntity> findByMemberAndCohort(Long memberId, Long cohortId) {
+        return cohortMemberRepository.findByMemberIdAndCohortId(memberId, cohortId);
     }
 
     @Transactional(readOnly = true)

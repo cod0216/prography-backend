@@ -51,4 +51,19 @@ class ResponseUtilityTest {
         assertThat(response.getBody().getData()).isNull();
         assertThat(response.getBody().getError().getCode()).isEqualTo(statusCode.getCode());
     }
+
+    @Test
+    void created_returnsCreatedResponse() {
+        // Given
+        String data = "created";
+
+        // When
+        ResponseEntity<ApiResponse<String>> response = ResponseUtility.created(data);
+
+        // Then
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        assertThat(response.getBody()).isNotNull();
+        assertThat(response.getBody().isSuccess()).isTrue();
+        assertThat(response.getBody().getData()).isEqualTo(data);
+    }
 }

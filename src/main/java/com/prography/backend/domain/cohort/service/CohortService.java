@@ -37,4 +37,9 @@ public class CohortService {
         return cohortRepository.findById(id)
                 .orElseThrow(() -> new CustomException(StatusCode.COHORT_NOT_FOUND));
     }
+
+    public CohortEntity getByGeneration(Integer generation) {
+        return cohortRepository.findByGeneration(generation)
+                .orElseThrow(() -> new CustomException(StatusCode.COHORT_NOT_FOUND));
+    }
 }

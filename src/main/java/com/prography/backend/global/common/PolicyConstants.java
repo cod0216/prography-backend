@@ -19,4 +19,5 @@ public final class PolicyConstants {
 
     public static final long INITIAL_DEPOSIT = 100_000L;
     public static final String INITIAL_DEPOSIT_DESCRIPTION = "초기 보증금";
+    public static final int CURRENT_GENERATION = 11;
 }
