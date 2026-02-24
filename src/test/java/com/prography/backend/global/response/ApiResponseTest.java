@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * packageName    : com.prography.backend.global.response<br>
  * fileName       : ApiResponseTest.java<br>
- * author         : codex <br>
+ * author         : cod0216 <br>
  * date           : 2026-02-24<br>
  * description    : ApiResponse에 대한 테스트 클래스입니다. <br>
  * ===========================================================<br>

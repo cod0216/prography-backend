@@ -7,7 +7,7 @@ import lombok.Getter;
 /**
  * packageName    : com.prography.backend.global.response<br>
  * fileName       : ErrorResponse.java<br>
- * author         : codex <br>
+ * author         : cod0216 <br>
  * date           : 2026-02-24<br>
  * description    : 실패 응답의 error 데이터를 구성하는 클래스입니다. <br>
  * ===========================================================<br>

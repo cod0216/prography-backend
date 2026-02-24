@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 /**
  * packageName    : com.prography.backend.global.error<br>
  * fileName       : GlobalExceptionHandler.java<br>
- * author         : codex <br>
+ * author         : cod0216 <br>
  * date           : 2026-02-24<br>
  * description    : 전역 예외를 처리하는 핸들러 클래스입니다. <br>
  * ===========================================================<br>

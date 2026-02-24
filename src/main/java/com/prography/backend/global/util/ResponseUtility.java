@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 /**
  * packageName    : com.prography.backend.global.util<br>
  * fileName       : ResponseUtility.java<br>
- * author         : codex <br>
+ * author         : cod0216 <br>
  * date           : 2026-02-24<br>
  * description    : 공통 응답 생성을 위한 유틸리티 클래스입니다. <br>
  * ===========================================================<br>

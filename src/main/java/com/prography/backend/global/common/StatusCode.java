@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 /**
  * packageName    : com.prography.backend.global.common<br>
  * fileName       : StatusCode.java<br>
- * author         : codex <br>
+ * author         : cod0216 <br>
  * date           : 2026-02-24<br>
  * description    : API 에러 코드를 정의하는 enum 클래스입니다. <br>
  * ===========================================================<br>

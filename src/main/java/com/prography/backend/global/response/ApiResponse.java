@@ -7,7 +7,7 @@ import lombok.Getter;
 /**
  * packageName    : com.prography.backend.global.response<br>
  * fileName       : ApiResponse.java<br>
- * author         : codex <br>
+ * author         : cod0216 <br>
  * date           : 2026-02-24<br>
  * description    : 공통 응답 포맷을 정의하는 클래스입니다. <br>
  * ===========================================================<br>
