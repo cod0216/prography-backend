@@ -38,7 +38,6 @@ public class AttendanceMapper {
                 .updatedAt(attendance.getUpdatedAt())
                 .build();
     }
-
     public MemberAttendanceResponse toMemberResponse(AttendanceEntity attendance) {
         if (attendance == null) {
             return null;

@@ -3,6 +3,8 @@ package com.prography.backend.domain.cohort.repository;
 import com.prography.backend.domain.cohort.entity.CohortEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 /**
  * packageName    : com.prography.backend.domain.cohort.repository<br>
  * fileName       : CohortRepository.java<br>
@@ -15,4 +17,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 2026-02-24         cod0216             최초생성<br>
  */
 public interface CohortRepository extends JpaRepository<CohortEntity, Long> {
+    Optional<CohortEntity> findByGeneration(Integer generation);
 }
