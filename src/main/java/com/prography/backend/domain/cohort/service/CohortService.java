@@ -1,0 +1,45 @@
+package com.prography.backend.domain.cohort.service;
+
+import com.prography.backend.domain.cohort.entity.CohortEntity;
+import com.prography.backend.domain.cohort.repository.CohortRepository;
+import com.prography.backend.global.common.StatusCode;
+import com.prography.backend.global.error.CustomException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * packageName    : com.prography.backend.domain.cohort.service<br>
+ * fileName       : CohortService.java<br>
+ * author         : cod0216 <br>
+ * date           : 2026-02-24<br>
+ * description    : 기수 관련 비즈니스 로직을 처리하는 서비스 클래스입니다. <br>
+ * ===========================================================<br>
+ * DATE              AUTHOR             NOTE<br>
+ * -----------------------------------------------------------<br>
+ * 2026-02-24         cod0216             최초생성<br>
+ */
+@Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
+public class CohortService {
+
+    private final CohortRepository cohortRepository;
+
+    public List<CohortEntity> getCohorts() {
+        return cohortRepository.findAll(Sort.by(Sort.Direction.ASC, "generation"));
+    }
+
+    public CohortEntity getById(Long id) {
+        return cohortRepository.findById(id)
+                .orElseThrow(() -> new CustomException(StatusCode.COHORT_NOT_FOUND));
+    }
+
+    public CohortEntity getByGeneration(Integer generation) {
+        return cohortRepository.findByGeneration(generation)
+                .orElseThrow(() -> new CustomException(StatusCode.COHORT_NOT_FOUND));
+    }
+}

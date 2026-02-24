@@ -1,0 +1,46 @@
+package com.prography.backend.domain.member.controller;
+
+import com.prography.backend.domain.attendance.dto.response.MemberAttendanceSummaryResponse;
+import com.prography.backend.domain.attendance.service.MemberAttendanceFacadeService;
+import com.prography.backend.domain.member.dto.response.MemberResponse;
+import com.prography.backend.domain.member.service.MemberFacadeService;
+import com.prography.backend.global.response.ApiResponse;
+import com.prography.backend.global.util.ResponseUtility;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * packageName    : com.prography.backend.domain.member.controller<br>
+ * fileName       : MemberController.java<br>
+ * author         : cod0216 <br>
+ * date           : 2026-02-24<br>
+ * description    : 회원 조회 API를 처리하는 컨트롤러 클래스입니다. <br>
+ * ===========================================================<br>
+ * DATE              AUTHOR             NOTE<br>
+ * -----------------------------------------------------------<br>
+ * 2026-02-24         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             회원 조회 응답 매핑 파사드 위임<br>
+ * 2026-02-24         cod0216             출결 요약 조회 엔드포인트 추가<br>
+ */
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/members")
+public class MemberController {
+
+    private final MemberFacadeService memberFacadeService;
+    private final MemberAttendanceFacadeService memberAttendanceFacadeService;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ApiResponse<MemberResponse>> getMember(@PathVariable Long id) {
+        return ResponseUtility.success(memberFacadeService.getMember(id));
+    }
+
+    @GetMapping("/{id}/attendance-summary")
+    public ResponseEntity<ApiResponse<MemberAttendanceSummaryResponse>> getAttendanceSummary(@PathVariable Long id) {
+        return ResponseUtility.success(memberAttendanceFacadeService.getAttendanceSummary(id));
+    }
+}

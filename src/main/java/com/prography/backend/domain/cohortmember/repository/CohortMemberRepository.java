@@ -1,0 +1,25 @@
+package com.prography.backend.domain.cohortmember.repository;
+
+import com.prography.backend.domain.cohortmember.entity.CohortMemberEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+import java.util.Optional;
+
+/**
+ * packageName    : com.prography.backend.domain.cohortmember.repository<br>
+ * fileName       : CohortMemberRepository.java<br>
+ * author         : cod0216 <br>
+ * date           : 2026-02-24<br>
+ * description    : 기수 회원 레포지토리 인터페이스입니다. <br>
+ * ===========================================================<br>
+ * DATE              AUTHOR             NOTE<br>
+ * -----------------------------------------------------------<br>
+ * 2026-02-24         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             기수별 조회 메서드 추가<br>
+ */
+public interface CohortMemberRepository extends JpaRepository<CohortMemberEntity, Long> {
+    Optional<CohortMemberEntity> findFirstByMemberIdOrderByIdDesc(Long memberId);
+    Optional<CohortMemberEntity> findByMemberIdAndCohortId(Long memberId, Long cohortId);
+    List<CohortMemberEntity> findByCohortGenerationOrderByMemberIdAsc(Integer generation);
+}
