@@ -4,6 +4,7 @@ import com.prography.backend.domain.cohort.entity.CohortEntity;
 import com.prography.backend.domain.cohort.repository.CohortRepository;
 import com.prography.backend.domain.cohortmember.entity.CohortMemberEntity;
 import com.prography.backend.domain.cohortmember.repository.CohortMemberRepository;
+import com.prography.backend.domain.cohortmember.service.CohortMemberService;
 import com.prography.backend.domain.deposit.entity.DepositHistoryEntity;
 import com.prography.backend.domain.deposit.repository.DepositHistoryRepository;
 import com.prography.backend.domain.member.dto.request.AdminMemberCreateRequest;
