@@ -26,6 +26,7 @@ import java.time.LocalDateTime;
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
  * 2026-02-24         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             만료 시각 갱신 메서드 추가<br>
  */
 @Entity
 @Getter
@@ -44,4 +45,8 @@ public class QrCodeEntity extends BaseEntity {
 
     @Column(name = "expires_at", nullable = false)
     private LocalDateTime expiresAt;
+
+    public void updateExpiresAt(LocalDateTime expiresAt) {
+        this.expiresAt = expiresAt;
+    }
 }

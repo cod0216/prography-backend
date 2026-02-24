@@ -16,11 +16,14 @@ import java.util.List;
  * DATE              AUTHOR             NOTE<br>
  * -----------------------------------------------------------<br>
  * 2026-02-24         cod0216             최초생성<br>
+ * 2026-02-24         cod0216             일정별 출결 조회 추가<br>
  */
 public interface AttendanceRepository extends JpaRepository<AttendanceEntity, Long> {
     boolean existsBySessionIdAndMemberId(Long sessionId, Long memberId);
 
     List<AttendanceEntity> findBySessionIdOrderByCreatedAtAsc(Long sessionId);
+
+    List<AttendanceEntity> findBySessionIdIn(Collection<Long> sessionIds);
 
     List<AttendanceEntity> findByMemberIdOrderByCreatedAtAsc(Long memberId);
 
