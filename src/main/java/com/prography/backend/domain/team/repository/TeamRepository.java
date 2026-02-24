@@ -3,6 +3,8 @@ package com.prography.backend.domain.team.repository;
 import com.prography.backend.domain.team.entity.TeamEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 /**
  * packageName    : com.prography.backend.domain.team.repository<br>
  * fileName       : TeamRepository.java<br>
@@ -15,4 +17,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 2026-02-24         cod0216             최초생성<br>
  */
 public interface TeamRepository extends JpaRepository<TeamEntity, Long> {
+    List<TeamEntity> findByCohortIdOrderByNameAsc(Long cohortId);
 }

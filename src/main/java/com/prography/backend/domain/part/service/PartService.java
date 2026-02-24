@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * packageName    : com.prography.backend.domain.part.service<br>
  * fileName       : PartService.java<br>
@@ -29,5 +31,9 @@ public class PartService {
     public PartEntity getById(Long id) {
         return partRepository.findById(id)
                 .orElseThrow(() -> new CustomException(StatusCode.PART_NOT_FOUND));
+    }
+
+    public List<PartEntity> getByCohortId(Long cohortId) {
+        return partRepository.findByCohortIdOrderByNameAsc(cohortId);
     }
 }

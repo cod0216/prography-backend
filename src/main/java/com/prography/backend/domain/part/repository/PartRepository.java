@@ -3,6 +3,8 @@ package com.prography.backend.domain.part.repository;
 import com.prography.backend.domain.part.entity.PartEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 /**
  * packageName    : com.prography.backend.domain.part.repository<br>
  * fileName       : PartRepository.java<br>
@@ -15,4 +17,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 2026-02-24         cod0216             최초생성<br>
  */
 public interface PartRepository extends JpaRepository<PartEntity, Long> {
+    List<PartEntity> findByCohortIdOrderByNameAsc(Long cohortId);
 }
