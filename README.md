@@ -1,5 +1,26 @@
 # 프로그라피 11기 백엔드 과제
 
+## 개발 환경
+
+- JDK 17
+- Spring Boot
+- Gradle Wrapper
+- H2 (in-memory)
+
+## 실행 방법
+
+```bash
+./gradlew bootRun
+```
+
+앱 실행 후 기본 URL: `http://localhost:8080`
+
+## 테스트
+
+```bash
+./gradlew test
+```
+
 ## ERD
 
 ![ERD](./ERD.png)
@@ -80,5 +101,4 @@
 * QR 코드는 24시간 유효하도록 설정했고, 한 일정당 활성 QR은 1개만 허용했습니다.
 * QR 갱신 시 기존 QR을 즉시 만료 처리한 뒤 새로운 QR을 발급하도록 구현했습니다.
 * 이를 통해 현장 운영 시 혼선과 중복 출석 가능성을 줄일 수 있었습니다.
-
 
